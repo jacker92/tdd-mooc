@@ -76,7 +76,7 @@ function createApp(database) {
   }
 
   function isMonday(date) {
-    return date.toTemporalInstant().toZonedDateTimeISO("UTC").toPlainDate().dayOfWeek === 1;
+    return convert(date).dayOfWeek === 1;
   }
   
   const convert = (date) => date.toTemporalInstant().toZonedDateTimeISO("UTC").toPlainDate()
