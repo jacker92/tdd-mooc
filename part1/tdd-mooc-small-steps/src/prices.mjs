@@ -94,7 +94,6 @@ function createApp(database) {
       const datePlain = convert(date)
       if (
         date &&
-        date.getDate() === holiday.getDate() &&
         datePlain.year === holidayPlainDate.year &&
         datePlain.month === holidayPlainDate.month &&
         datePlain.day === holidayPlainDate.day
