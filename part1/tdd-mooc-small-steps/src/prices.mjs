@@ -102,7 +102,6 @@ return true
       }
       if (
       
-        date.getFullYear() === holiday.getFullYear() &&
         date.getMonth() === holiday.getMonth() &&
         date.getDate() === holiday.getDate()
       ) {
