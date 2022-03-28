@@ -30,7 +30,7 @@ function createApp(database) {
   }
 
   const parsePlainDate = (dateString) => {
-    
+    if (dateString){}
   }
 
   function calculateCost(age, type, date, baseCost) {
