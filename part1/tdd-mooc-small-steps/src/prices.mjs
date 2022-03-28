@@ -31,6 +31,7 @@ function createApp(database) {
 
   const parsePlainDate = (dateString) => {
     if (dateString){
+      
     }
   }
 
