@@ -97,7 +97,7 @@ function createApp(database) {
         datePlain.year === holidayPlain.year && 
         datePlain.month === holidayPlain.month && 
          datePlain.day === holidayPlain.day){
-return true;
+        return true;
       }
     }
     return false;
