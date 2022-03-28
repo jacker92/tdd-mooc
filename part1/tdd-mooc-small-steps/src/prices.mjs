@@ -90,6 +90,7 @@ function createApp(database) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
       let holiday = new Date(row.holiday);
+      const holidayPlainDate = ""
       if (
         date &&
         date.getFullYear() === holiday.getFullYear() &&
