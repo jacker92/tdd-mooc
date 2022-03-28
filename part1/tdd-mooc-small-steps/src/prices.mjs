@@ -26,7 +26,7 @@ function createApp(database) {
 
   function parseDate(dateString) {
     if (dateString) {
-      return Temporal.PlainDate.from(dateString)
+      return Temporal.PlainDate.from(dateString);
     }
   }
 
@@ -70,9 +70,9 @@ function createApp(database) {
 
   function calculateReduction(date) {
     let reduction = 0;
-    if (date && isMonday(date) && date && !isHoliday(date))  {
+    if (date && isMonday(date) && date && !isHoliday(date)) {
       reduction = 35;
-}
+    }
     return reduction;
   }
 
@@ -83,12 +83,12 @@ function createApp(database) {
   function isHoliday(date) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
-      const holidayPlain = Temporal.PlainDate.from(row.holiday)
+      const holidayPlain = Temporal.PlainDate.from(row.holiday);
       if (
         date &&
         date.year === holidayPlain.year &&
         date.month === holidayPlain.month &&
-        date.day === holidayPlain.day 
+        date.day === holidayPlain.day
       ) {
         return true;
       }
