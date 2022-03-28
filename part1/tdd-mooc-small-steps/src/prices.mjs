@@ -25,7 +25,7 @@ function createApp(database) {
   });
 
   const parsePlainDate = () => {
-    
+    //return Temporal.PlainDate.from("2000-12-31")
   }
 
   function parseDate(dateString) {
