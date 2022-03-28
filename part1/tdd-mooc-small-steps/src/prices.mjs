@@ -24,7 +24,6 @@ function createApp(database) {
     res.json({ cost });
   });
 
-
   const parsePlainDate = (dateString) => {
     if (dateString){
       return Temporal.PlainDate.from(dateString)
