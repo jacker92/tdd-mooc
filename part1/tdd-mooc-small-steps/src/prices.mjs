@@ -95,7 +95,7 @@ function createApp(database) {
       const holidayPlain = Temporal.PlainDate.from(row.holiday)
 
       if (datePlain && 
-        datePlain.year === holiday.year && 
+        datePlain.year === holidayPlain.year && 
         datePlain.month === holiday.month && 
          datePlain.day === holiday.day){
 return true;
