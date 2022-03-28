@@ -95,6 +95,7 @@ function createApp(database) {
       const holidayPlain = Temporal.PlainDate.from(row.holiday)
 
       if (true){
+        
       }
       if (
         date &&
