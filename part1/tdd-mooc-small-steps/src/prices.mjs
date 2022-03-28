@@ -25,7 +25,7 @@ function createApp(database) {
   });
 
   const parsePlainDate = () => {
-    console.log("hello")
+    
   }
 
   function parseDate(dateString) {
