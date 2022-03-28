@@ -83,7 +83,6 @@ function createApp(database) {
     return date.dayOfWeek === 1;
   }
 
-
   const convert = (date) => date && date.toTemporalInstant().toZonedDateTimeISO("UTC").toPlainDate()
 
   function isHoliday(date) {
