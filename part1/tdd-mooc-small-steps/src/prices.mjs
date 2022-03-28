@@ -78,10 +78,10 @@ function createApp(database) {
 
   const isMonday = (date) => date.dayOfWeek === 1;
 
-  function isHoliday(date2) {
+  function isHoliday(date) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
-      const datePlain = date2
+      const datePlain = date
       const holidayPlain = Temporal.PlainDate.from(row.holiday)
 
       if (datePlain &&  datePlain.year === holidayPlain.year &&  datePlain.month === holidayPlain.month &&  datePlain.day === holidayPlain.day){
