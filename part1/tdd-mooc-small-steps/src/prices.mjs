@@ -20,7 +20,7 @@ function createApp(database) {
     const baseCost = database.findBasePriceByType(type).cost;
     const date3 = parseDate(req.query.date);
     const date = parsePlainDate(req.query.date);
-    const cost = calculateCost(age, type, date3, baseCost);
+    const cost = calculateCost(age, type, convert(date3), baseCost);
     res.json({ cost });
   });
 
@@ -74,7 +74,7 @@ function createApp(database) {
 
   function calculateReduction(date) {
     let reduction = 0;
-    if (date && isMonday(convert(date)) && !isHoliday(convert(date))) {
+    if (date && isMonday(date) && !isHoliday(date)) {
       reduction = 35;
     }
     return reduction;
