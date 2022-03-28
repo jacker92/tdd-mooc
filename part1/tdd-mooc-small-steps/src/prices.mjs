@@ -19,7 +19,7 @@ function createApp(database) {
     const type = req.query.type;
     const baseCost = database.findBasePriceByType(type).cost;
     const date3 = parseDate(req.query.date);
-    const date2 = parsePlainDate(req.query.date);
+    const date = parsePlainDate(req.query.date);
     const cost = calculateCost(age, type, date3, baseCost);
     res.json({ cost });
   });
