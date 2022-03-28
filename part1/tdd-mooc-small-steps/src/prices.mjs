@@ -83,7 +83,7 @@ function createApp(database) {
     return date.getDay() === 1;
   }
 
-  const convert = (date) => date  .toTemporalInstant().toZonedDateTimeISO("UTC").toPlainDate()
+  const convert = (date) => date.toTemporalInstant().toZonedDateTimeISO("UTC").toPlainDate()
 
   function isHoliday(date) {
     const holidays = database.getHolidays();
