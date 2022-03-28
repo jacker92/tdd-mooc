@@ -93,8 +93,7 @@ function createApp(database) {
       const datePlain = convert(date)
       if (
         datePlain &&
-        datePlain.year === holidayPlainDate.year && datePlain.month === holidayPlainDate.month &&
-        datePlain.day === holidayPlainDate.day
+        datePlain.year === holidayPlainDate.year && datePlain.month === holidayPlainDate.month &&datePlain.day === holidayPlainDate.day
       ) {
         return true;
       }
