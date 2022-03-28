@@ -24,7 +24,8 @@ function createApp(database) {
     res.json({ cost });
   });
 
-  const parsePlainDate = () => {}
+  const parsePlainDate = () => {
+  }
 
   function parseDate(dateString) {
     if (dateString) {
