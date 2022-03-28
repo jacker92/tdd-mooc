@@ -101,7 +101,6 @@ function createApp(database) {
 return true
       }
       if (
-      
         date.getDate() === holiday.getDate()
       ) {
         return true;
