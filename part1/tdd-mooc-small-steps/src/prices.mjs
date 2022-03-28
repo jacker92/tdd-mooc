@@ -23,8 +23,8 @@ function createApp(database) {
     const cost = calculateCost(age, type, date, baseCost);
     res.json({ cost });
   });
-  
-  const parsePlainDate = () =>{}
+
+  const parsePlainDate = () => {}
 
   function parseDate(dateString) {
     if (dateString) {
