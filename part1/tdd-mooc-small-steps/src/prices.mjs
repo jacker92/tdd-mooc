@@ -24,8 +24,8 @@ function createApp(database) {
   });
 
   const parsePlainDate = (dateString) => {
-    return dateString && Temporal.PlainDate.from(dateString)
-  }
+    return dateString && Temporal.PlainDate.from(dateString);
+  };
 
   function calculateCost(age, type, date, baseCost) {
     if (type === "night") {
@@ -76,13 +76,16 @@ function createApp(database) {
   function isMonday(date) {
     return date.dayOfWeek === 1;
   }
-  
+
   function isHoliday(date) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
-      const holiday = Temporal.PlainDate.from(row.holiday)
+      const holiday = Temporal.PlainDate.from(row.holiday);
       if (
-        date && date.year === holiday.year &&  date.month === holiday.month &&  date.day === holiday.day
+        date &&
+        date.year === holiday.year &&
+        date.month === holiday.month &&
+        date.day === holiday.day
       ) {
         return true;
       }
