@@ -75,7 +75,7 @@ function createApp(database) {
   function calculateReduction(date) {
     let reduction = 0;
     console.log(date, date && date.constructor.name)
-const d = date && date.constructor.name === 'TemporalDate' ? date : convert(date)
+const d = date && date.constructor.name === 'PlainDate' ? date : convert(date)
     if (date && isMonday(d) && date && !isHoliday(d))  {
       reduction = 35;
 }
