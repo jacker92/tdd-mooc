@@ -100,7 +100,6 @@ function createApp(database) {
          datePlain.day === holidayPlain.day){
 return true;
       }
-
     }
     return false;
   }
