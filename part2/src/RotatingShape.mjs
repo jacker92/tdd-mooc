@@ -1,29 +1,30 @@
-import _ from 'lodash'
-
 export class RotatingShape {
   shape;
-  
+
   constructor(shape) {
-    this.shape = shape;
+    this.shape = shape.replaceAll(" ", "");
   }
 
   rotateRight() {
-    const s = this.shape.replaceAll(" ", "");
-    const splitted = s.split("\n")
-    let result = new Array(3).fill('.').map(() => new Array(3).fill('.'));
-    for (let y = 0; y < splitted.length; y++) {
-        for (let x = 0; x < splitted[y].length; x++) {
-            result[x][y] = splitted[x][y]
-        }
-    }
+    const transposed = this.transpose90Degrees();
+    const transposedString = this.joinTransposedArray(transposed);
 
-    const transposed = result[0].map((_, index) => result.map(row => row[index]).reverse())
-    const r = transposed.map(x => x.join('')).join('\n')
+    return new RotatingShape(transposedString);
+  }
 
-      return new RotatingShape(r)
+  joinTransposedArray(transposed) {
+    return transposed.map((x) => x.join("")).join("\n");
+  }
+
+  transpose90Degrees() {
+    const splitted = this.shape.split("\n");
+
+    return splitted[0]
+      .split("")
+      .map((_, index) => splitted.map((row) => row[index]).reverse());
   }
 
   toString() {
-    return `${this.shape.replaceAll(" ", "")}\n`;
+    return `${this.shape}\n`;
   }
 }
