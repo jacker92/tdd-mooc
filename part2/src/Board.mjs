@@ -3,7 +3,6 @@ export class Board {
   height;
   fallingBlock;
   fallingBlockRow;
-  falling;
   stationary;
 
   constructor(width, height) {
@@ -19,17 +18,12 @@ export class Board {
       throw new Error("already falling");
     }
 
-    block.fallingBlockRow = 0;
     this.fallingBlock = block;
     this.fallingBlockRow = 0;
-    this.falling = true;
   }
 
   hasFalling() {
-    if (this.falling) {
-      return true;
-    }
-    return false;
+      return this.fallingBlock != null;
   }
 
   tick() {
@@ -37,8 +31,8 @@ export class Board {
       return;
     }
     if (this.fallingBlockRow === this.height - 1) {
-      this.falling = false;
       this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color;
+      this.fallingBlock = null
       return;
     }
     this.fallingBlockRow++;
