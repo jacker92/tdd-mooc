@@ -10,6 +10,9 @@ export class Board {
   }
 
   drop(block) {
+    if (this.fallingBlock) {
+      throw new Error("already falling");
+    }
     this.fallingBlock = block;
     this.fallingBlockRow = 0;
   }
