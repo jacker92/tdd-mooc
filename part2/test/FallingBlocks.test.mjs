@@ -28,7 +28,7 @@ describe("Falling blocks", () => {
          ...`
       );
     });
-    
+
     it("it moves down one row per tick", () => {
       board.tick();
 
