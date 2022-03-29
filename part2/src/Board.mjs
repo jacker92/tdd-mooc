@@ -1,3 +1,5 @@
+const EMPTY = '.';
+
 export class Board {
   width;
   height;
@@ -9,8 +11,8 @@ export class Board {
     this.width = width;
     this.height = height;
     this.stationary = new Array(width)
-      .fill(".")
-      .map(() => new Array(height).fill("."));
+      .fill(EMPTY)
+      .map(() => new Array(height).fill(EMPTY));
   }
 
   drop(block) {
@@ -30,7 +32,7 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    if (this.fallingBlockRow === this.height - 1) {
+    if (this.fallingBlockRow === this.height - 1 || this.stationary[1][this.fallingBlockRow+1] !==  EMPTY) {
       this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color;
       this.fallingBlock = null
       return;
