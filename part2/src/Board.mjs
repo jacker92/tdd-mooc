@@ -1,4 +1,4 @@
-const EMPTY = '.';
+const EMPTY = ".";
 
 export class Board {
   width;
@@ -10,9 +10,13 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.stationary = new Array(width)
-      .fill(EMPTY)
-      .map(() => new Array(height).fill(EMPTY));
+    this.stationary = this.initializeStationaryArray()
+  }
+
+  initializeStationaryArray() {
+    return new Array(this.width)
+    .fill(EMPTY)
+    .map(() => new Array(this.height).fill(EMPTY));
   }
 
   drop(block) {
@@ -25,16 +29,28 @@ export class Board {
   }
 
   hasFalling() {
-      return this.fallingBlock != null;
+    return this.fallingBlock != null;
+  }
+
+  hasReachedLastRow() {
+    return this.fallingBlockRow === this.height - 1;
+  }
+
+  otherBlockStopsMovement() {
+    return this.stationary[1][this.fallingBlockRow + 1] !== EMPTY;
+  }
+
+  fallingShouldStop() {
+    return this.hasReachedLastRow() || this.otherBlockStopsMovement()
   }
 
   tick() {
     if (!this.hasFalling()) {
       return;
     }
-    if (this.fallingBlockRow === this.height - 1 || this.stationary[1][this.fallingBlockRow+1] !==  EMPTY) {
+    if (this.fallingShouldStop()) {
       this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color;
-      this.fallingBlock = null
+      this.fallingBlock = null;
       return;
     }
     this.fallingBlockRow++;
