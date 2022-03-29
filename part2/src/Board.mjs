@@ -37,6 +37,7 @@ export class Board {
     if (this.hasFalling()) {
       if (this.fallingBlockRow === this.height - 1) {
         this.falling = false;
+        this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color
         return;
       }
       this.fallingBlockRow++;
