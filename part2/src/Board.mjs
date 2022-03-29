@@ -17,6 +17,10 @@ export class Board {
     this.fallingBlockRow = 0;
   }
 
+  hasFalling() {
+    return true;
+  }
+
   tick() {
     this.fallingBlockRow++;
   }
