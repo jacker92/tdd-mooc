@@ -1,19 +1,19 @@
 export class Board {
   width;
   height;
-  block = false;
+  fallingBlock;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
   }
 
-  drop() {
-    this.block = true;
+  drop(block) {
+    this.fallingBlock = block
   }
 
   toString() {
-    if (this.block) {
+    if (this.fallingBlock) {
       return `.X.\n...\n...\n`;
     }
     return `...\n...\n...\n`;
