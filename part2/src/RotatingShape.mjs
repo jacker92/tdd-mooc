@@ -1,12 +1,11 @@
 export class RotatingShape {
+  shape;
+  
+  constructor(shape) {
+    this.shape = shape;
+  }
 
-    shape;
-    constructor(shape) {
-        console.log(shape )
-this.shape = shape;
-    }
-
-    toString() {
-        return `${this.shape.replaceAll(' ', '')}\n`
-    }
+  toString() {
+    return `${this.shape.replaceAll(" ", "")}\n`;
+  }
 }

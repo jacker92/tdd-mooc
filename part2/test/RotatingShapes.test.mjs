@@ -1,6 +1,5 @@
-
 import { expect } from "chai";
-import {RotatingShape } from "../src/RotatingShape.mjs";
+import { RotatingShape } from "../src/RotatingShape.mjs";
 
 describe("Rotating 3x3 shape", () => {
   const shape = new RotatingShape(

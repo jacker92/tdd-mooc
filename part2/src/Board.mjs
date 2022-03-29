@@ -10,13 +10,13 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.stationary = this.initializeStationaryArray()
+    this.stationary = this.initializeStationaryArray();
   }
 
   initializeStationaryArray() {
     return new Array(this.width)
-    .fill(EMPTY)
-    .map(() => new Array(this.height).fill(EMPTY));
+      .fill(EMPTY)
+      .map(() => new Array(this.height).fill(EMPTY));
   }
 
   drop(block) {
@@ -41,7 +41,7 @@ export class Board {
   }
 
   fallingShouldStop() {
-    return this.hasReachedLastRow() || this.otherBlockStopsMovement()
+    return this.hasReachedLastRow() || this.otherBlockStopsMovement();
   }
 
   tick() {
