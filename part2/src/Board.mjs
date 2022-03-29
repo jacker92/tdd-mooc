@@ -1,5 +1,3 @@
-
-
 export class Board {
   width;
   height;
@@ -11,9 +9,10 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.stationary = new Array(width).fill('.').map(() => new Array(height).fill('.'));
-    }
-  
+    this.stationary = new Array(width)
+      .fill(".")
+      .map(() => new Array(height).fill("."));
+  }
 
   drop(block) {
     if (this.fallingBlock) {
@@ -34,17 +33,18 @@ export class Board {
   }
 
   tick() {
-    if (this.hasFalling()) {
-      if (this.fallingBlockRow === this.height - 1) {
-        this.falling = false;
-        this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color
-        return;
-      }
-      this.fallingBlockRow++;
+    if (!this.hasFalling()) {
+      return;
     }
+    if (this.fallingBlockRow === this.height - 1) {
+      this.falling = false;
+      this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color;
+      return;
+    }
+    this.fallingBlockRow++;
   }
 
-  isCurrentlyFallingBlock (i, j) {
+  isCurrentlyFallingBlock(i, j) {
     return this.fallingBlock && this.fallingBlockRow === i && j === 1;
   }
 
@@ -63,5 +63,4 @@ export class Board {
     }
     return result;
   }
- 
 }

@@ -75,7 +75,7 @@ describe("Falling blocks", () => {
          .X.`
       );
       expect(board.hasFalling(), "the block should stop moving").to.be.false;
-      expect(board.stationary[1][2]).to.equal('X')
+      expect(board.stationary[1][2]).to.equal("X");
     });
   });
 
