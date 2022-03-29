@@ -13,7 +13,7 @@ export class Board {
   }
 
   toString() {
-    if(this.block) {
+    if (this.block) {
       return `.X.\n...\n...\n`;
     }
     return `...\n...\n...\n`;
