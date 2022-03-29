@@ -3,6 +3,7 @@ export class Board {
   height;
   fallingBlock;
   fallingBlockRow;
+  falling;
 
   constructor(width, height) {
     this.width = width;
@@ -15,14 +16,24 @@ export class Board {
     }
     this.fallingBlock = block;
     this.fallingBlockRow = 0;
+    this.falling = true;
   }
 
   hasFalling() {
-    return true;
+    if (this.falling) {
+      return true;
+    }
+    return false;
   }
 
   tick() {
-    this.fallingBlockRow++;
+    if (this.hasFalling()) {
+      if (this.fallingBlockRow === this.height - 1) {
+        this.falling = false;
+        return;
+      }
+      this.fallingBlockRow++;
+    }
   }
 
   toString() {
