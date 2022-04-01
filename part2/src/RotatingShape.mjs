@@ -6,12 +6,12 @@ export class RotatingShape {
   constructor(shape, distinctOrientations = 4) {
     this.shape = shape.replaceAll(" ", "");
     this.rows = this.shape.split("\n");
-    this.distinctOrientations = distinctOrientations
+    this.distinctOrientations = distinctOrientations;
   }
 
   rotateLeft() {
-    if(this.distinctOrientations === 2) {
-     return this.rotateRight();
+    if (this.distinctOrientations === 2) {
+      return this.rotateRight();
     }
 
     const transposed = this.transpose90DegreesCounterclockwise(this.rows);
@@ -19,14 +19,12 @@ export class RotatingShape {
   }
 
   rotateRight() {
-     const transposed = this.transpose90Degrees(this.rows)
-      return this.createNewRotatingShape(transposed)
+    const transposed = this.transpose90Degrees(this.rows);
+    return this.createNewRotatingShape(transposed);
   }
 
   transpose90Degrees(rows) {
-  return  rows.map((_, index) =>
-      rows.map((row) => row[index]).reverse()
-    );
+    return rows.map((_, index) => rows.map((row) => row[index]).reverse());
   }
 
   transpose90DegreesCounterclockwise(rows) {
@@ -37,7 +35,7 @@ export class RotatingShape {
   }
 
   createNewRotatingShape(transposed) {
-    const joinedArray = this.joinTransposedArray(transposed)
+    const joinedArray = this.joinTransposedArray(transposed);
     return new RotatingShape(joinedArray);
   }
 

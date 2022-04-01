@@ -1,18 +1,18 @@
 import { RotatingShape } from "../src/RotatingShape.mjs";
 
+export class Tetromino {}
 
-export class Tetromino {
-    
-}
-
-Tetromino.T_SHAPE = new RotatingShape(      
-    `.T.
+Tetromino.T_SHAPE = new RotatingShape(
+  `.T.
      TTT
-     ...`)
+     ...`
+);
 
-Tetromino.I_SHAPE = new RotatingShape(      
-    `.....
+Tetromino.I_SHAPE = new RotatingShape(
+  `.....
      .....
      IIII.
      .....
-     .....`, 2)
+     .....`,
+  2
+);
