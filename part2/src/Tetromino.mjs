@@ -9,3 +9,10 @@ Tetromino.T_SHAPE = new RotatingShape(
     `.T.
      TTT
      ...`)
+
+Tetromino.I_SHAPE = new RotatingShape(      
+    `.....
+     .....
+     IIII.
+     .....
+     .....`, 2)
