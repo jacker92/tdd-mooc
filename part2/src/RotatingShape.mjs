@@ -1,7 +1,7 @@
 export class RotatingShape {
   shape;
   rows;
-  columns
+  columns;
 
   constructor(shape) {
     this.shape = shape.replaceAll(" ", "");
@@ -10,11 +10,11 @@ export class RotatingShape {
   }
 
   createColumns() {
-   let columns = new Array(this.rows.length).fill('');
-    this.rows.map(x => {
+    let columns = new Array(this.rows.length).fill("");
+    this.rows.map((x) => {
       for (let i = 0; i < x.length; i++) {
         const element = x[i];
-        columns[i] += element + '\n';
+        columns[i] += element + "\n";
       }
     });
 

@@ -72,13 +72,13 @@ describe("Rotating 5x5 shape", () => {
     );
   });
 
-  it('columns test', () => {
+  it("columns test", () => {
     expect(shape.columns[0].toString()).to.equalShape(
       `A
       F
       K
       P
       U`
-    )
-  })
+    );
+  });
 });
