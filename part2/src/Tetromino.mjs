@@ -91,14 +91,14 @@ Tetromino.J_SHAPE = new Tetromino(
 
 Tetromino.S_SHAPE = new Tetromino(
   `...
-   LLL
-   L..`,
+  .SS
+  SS.`,
   2
 )
 
 Tetromino.Z_SHAPE = new Tetromino(
   `...
-   LLL
-   L..`,
+  ZZ.
+  .ZZ`,
   2
 )

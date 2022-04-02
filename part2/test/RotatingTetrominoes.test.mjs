@@ -184,11 +184,11 @@ describe("The J shape", () => {
 describe("The S shape", () => {
   const shape = Tetromino.S_SHAPE;
 
-  xit("initial orientation", () => {
+  it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
     `...
-     JJJ
-     ..J`
+     .SS
+     SS.`
     );
   });
 
@@ -217,11 +217,11 @@ describe("The S shape", () => {
 describe("The Z shape", () => {
   const shape = Tetromino.Z_SHAPE;
 
-  xit("initial orientation", () => {
+  it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
     `...
-     JJJ
-     ..J`
+     ZZ.
+     .ZZ`
     );
   });
 
