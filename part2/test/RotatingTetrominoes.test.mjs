@@ -116,3 +116,68 @@ describe("The O shape", () => {
     expect(distinctOrientations(shape).size).to.equal(1);
   });
 });
+
+describe("The L shape", () => {
+  const shape = Tetromino.L_SHAPE;
+
+  it("initial orientation", () => {
+    expect(shape.toString()).to.equalShape(
+    `...
+     LLL
+     L..`
+    );
+  });
+
+  xit("cannot be rotated right/clockwise", () => {
+    expect(shape.rotateRight().toString()).to.equalShape(
+      `.OO
+       .OO
+       ...`
+    );
+  });
+
+  xit("cannot be rotated left/counter-clockwise", () => {
+    expect(shape.rotateLeft().toString()).to.equalShape(
+      `.OO
+       .OO
+       ...`
+    );
+  });
+
+  it("has 4 distinct orientations", () => {
+    expect(distinctOrientations(shape).size).to.equal(4);
+  });
+});
+
+describe("The J shape", () => {
+  const shape = Tetromino.J_SHAPE;
+
+  it("initial orientation", () => {
+    expect(shape.toString()).to.equalShape(
+    `...
+     JJJ
+     ..J`
+    );
+  });
+
+  xit("cannot be rotated right/clockwise", () => {
+    expect(shape.rotateRight().toString()).to.equalShape(
+      `.OO
+       .OO
+       ...`
+    );
+  });
+
+  xit("cannot be rotated left/counter-clockwise", () => {
+    expect(shape.rotateLeft().toString()).to.equalShape(
+      `.OO
+       .OO
+       ...`
+    );
+  });
+
+  it("has 4 distinct orientations", () => {
+    expect(distinctOrientations(shape).size).to.equal(4);
+  });
+});
+
