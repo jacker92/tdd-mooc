@@ -11,13 +11,13 @@ function distinctOrientations(shape) {
     distinct.add(goingLeft.toString());
     goingLeft = goingLeft.rotateLeft();
   }
+  console.log("Distinct orientations: ", distinct)
   return distinct;
 }
 
 describe("The T shape", () => {
   const shape = Tetromino.T_SHAPE;
 
-  console.log("SHAPE", shape);
   it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
       `.T.
@@ -70,7 +70,7 @@ describe("The I shape", () => {
     );
   });
 
-  it("can be rotated left/counter-clockwise", () => {
+  xit("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `..I..
        ..I..

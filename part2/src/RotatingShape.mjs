@@ -1,19 +1,13 @@
 export class RotatingShape {
   shape;
   rows;
-  distinctOrientations;
 
-  constructor(shape, distinctOrientations = 4) {
+  constructor(shape) {
     this.shape = shape.replaceAll(" ", "");
     this.rows = this.shape.split("\n");
-    this.distinctOrientations = distinctOrientations;
   }
 
   rotateLeft() {
-    if (this.distinctOrientations === 2) {
-      return this.rotateRight();
-    }
-
     const transposed = this.transpose90DegreesCounterclockwise(this.rows);
     return this.createNewRotatingShape(transposed);
   }
