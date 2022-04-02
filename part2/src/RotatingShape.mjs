@@ -1,10 +1,24 @@
 export class RotatingShape {
   shape;
   rows;
+  columns
 
   constructor(shape) {
     this.shape = shape.replaceAll(" ", "");
     this.rows = this.shape.split("\n");
+    this.columns = this.createColumns();
+  }
+
+  createColumns() {
+   let columns = new Array(this.rows.length).fill('');
+    this.rows.map(x => {
+      for (let i = 0; i < x.length; i++) {
+        const element = x[i];
+        columns[i] += element + '\n';
+      }
+    });
+
+    return columns;
   }
 
   rotateLeft() {

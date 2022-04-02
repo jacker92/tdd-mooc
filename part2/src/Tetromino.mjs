@@ -47,6 +47,14 @@ export class Tetromino {
     );
   }
 
+  rows() {
+    return this.orientations[this.currentOrientation].rows;
+  }
+
+  columns() {
+    return this.orientations[this.currentOrientation].colums;
+  }
+
   toString() {
     return this.orientations[this.currentOrientation].toString();
   }

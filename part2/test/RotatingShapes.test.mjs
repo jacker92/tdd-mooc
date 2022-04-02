@@ -71,4 +71,14 @@ describe("Rotating 5x5 shape", () => {
        AFKPU`
     );
   });
+
+  it('columns test', () => {
+    expect(shape.columns[0].toString()).to.equalShape(
+      `A
+      F
+      K
+      P
+      U`
+    )
+  })
 });
