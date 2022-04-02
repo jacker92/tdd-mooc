@@ -67,3 +67,10 @@ Tetromino.I_SHAPE = new Tetromino(
      .....`,
   2
 );
+
+Tetromino.O_SHAPE = new Tetromino(
+  `.OO
+  .OO
+  ...`,
+  1
+)
