@@ -11,7 +11,7 @@ function distinctOrientations(shape) {
     distinct.add(goingLeft.toString());
     goingLeft = goingLeft.rotateLeft();
   }
-  console.log("Distinct orientations: ", distinct)
+  console.log("Distinct orientations: ", distinct);
   return distinct;
 }
 
