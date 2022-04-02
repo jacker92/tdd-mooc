@@ -73,4 +73,4 @@ Tetromino.O_SHAPE = new Tetromino(
   .OO
   ...`,
   1
-)
+);
