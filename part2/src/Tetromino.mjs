@@ -2,38 +2,34 @@ import { RotatingShape } from "../src/RotatingShape.mjs";
 
 export class Tetromino {
 
-  shape;
   currentOrientation;
   orientations;
   orientationCount;
-  constructor(shapeStr, orientationCount, orientations, currentOrientation) {
-    this.shape = new RotatingShape(shapeStr.trim());
+  constructor(shapeStr, orientationCount, orientations, currentOrientation = 0) {
     this.orientations = orientations || [];
     this.orientationCount = orientationCount;
 
     if (!orientations) {
-      let orientation = new RotatingShape(shapeStr.trim())
-      for (let i = 0; i < orientationCount; i++) {
-        this.orientations[i] = orientation;
-        orientation = orientation.rotateRight();
-      }
+      this.initializeOrientations(shapeStr, orientationCount);
     }
 
-    if (currentOrientation) {
-      this.currentOrientation = (currentOrientation + orientationCount) % orientationCount
-    } else {
-      this.currentOrientation = 0
+    this.currentOrientation = (currentOrientation + orientationCount) % orientationCount
+  }
+
+  initializeOrientations(shapeStr, orientationCount) {
+    let orientation = new RotatingShape(shapeStr.trim());
+    for (let i = 0; i < orientationCount; i++) {
+      this.orientations[i] = orientation;
+      orientation = orientation.rotateRight();
     }
   }
 
   rotateLeft() {
-    const newShape = this.shape.rotateLeft();
-    return new Tetromino(newShape.toString(), this.orientationCount, this.orientations, this.currentOrientation - 1)
+    return new Tetromino(this.toString(), this.orientationCount, this.orientations, this.currentOrientation - 1)
   }
 
   rotateRight() {
-    const newShape = this.shape.rotateRight();
-    return new Tetromino(newShape.toString(), this.orientationCount, this.orientations, this.currentOrientation + 1);
+    return new Tetromino(this.toString(), this.orientationCount, this.orientations, this.currentOrientation + 1);
   }
 
   toString() {
