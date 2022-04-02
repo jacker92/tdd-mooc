@@ -76,7 +76,7 @@ Tetromino.O_SHAPE = new Tetromino(
 );
 
 Tetromino.L_SHAPE = new Tetromino(
-    `...
+  `...
      LLL
      L..`,
   4
@@ -87,4 +87,18 @@ Tetromino.J_SHAPE = new Tetromino(
   JJJ
   ..J`,
   4
+)
+
+Tetromino.S_SHAPE = new Tetromino(
+  `...
+   LLL
+   L..`,
+  2
+)
+
+Tetromino.Z_SHAPE = new Tetromino(
+  `...
+   LLL
+   L..`,
+  2
 )
