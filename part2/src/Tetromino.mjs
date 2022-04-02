@@ -80,25 +80,25 @@ Tetromino.L_SHAPE = new Tetromino(
      LLL
      L..`,
   4
-)
+);
 
 Tetromino.J_SHAPE = new Tetromino(
   `...
   JJJ
   ..J`,
   4
-)
+);
 
 Tetromino.S_SHAPE = new Tetromino(
   `...
   .SS
   SS.`,
   2
-)
+);
 
 Tetromino.Z_SHAPE = new Tetromino(
   `...
   ZZ.
   .ZZ`,
   2
-)
+);

@@ -11,7 +11,6 @@ function distinctOrientations(shape) {
     distinct.add(goingLeft.toString());
     goingLeft = goingLeft.rotateLeft();
   }
-  console.log("Distinct orientations: ", distinct);
   return distinct;
 }
 
@@ -122,7 +121,7 @@ describe("The L shape", () => {
 
   it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
-    `...
+      `...
      LLL
      L..`
     );
@@ -154,7 +153,7 @@ describe("The J shape", () => {
 
   it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
-    `...
+      `...
      JJJ
      ..J`
     );
@@ -186,7 +185,7 @@ describe("The S shape", () => {
 
   it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
-    `...
+      `...
      .SS
      SS.`
     );
@@ -213,13 +212,12 @@ describe("The S shape", () => {
   });
 });
 
-
 describe("The Z shape", () => {
   const shape = Tetromino.Z_SHAPE;
 
   it("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
-    `...
+      `...
      ZZ.
      .ZZ`
     );
