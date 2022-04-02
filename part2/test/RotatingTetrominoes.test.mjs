@@ -192,19 +192,19 @@ describe("The S shape", () => {
     );
   });
 
-  xit("cannot be rotated right/clockwise", () => {
+  it("cannot be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
-      `.OO
-       .OO
-       ...`
+      `S..
+       SS.
+       .S.`
     );
   });
 
-  xit("cannot be rotated left/counter-clockwise", () => {
+  it("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
-      `.OO
-       .OO
-       ...`
+      `S..
+       SS.
+       .S.`
     );
   });
 
