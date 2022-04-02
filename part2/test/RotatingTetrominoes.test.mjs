@@ -225,19 +225,19 @@ describe("The Z shape", () => {
     );
   });
 
-  xit("cannot be rotated right/clockwise", () => {
+  it("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
-      `.OO
-       .OO
-       ...`
+      `.Z.
+       ZZ.
+       Z..`
     );
   });
 
-  xit("cannot be rotated left/counter-clockwise", () => {
+  it("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
-      `.OO
-       .OO
-       ...`
+      `.Z.
+       ZZ.
+       Z..`
     );
   });
 
