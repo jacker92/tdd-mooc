@@ -5,6 +5,7 @@ export class Board {
   height;
   fallingBlock;
   fallingBlockRow;
+  fallingBlockColumn;
   stationary;
 
   constructor(width, height) {
@@ -26,6 +27,7 @@ export class Board {
 
     this.fallingBlock = block;
     this.fallingBlockRow = 0;
+    this.fallingBlockColumn = (Math.round(this.width / 2)) -1;
   }
 
   hasFalling() {
@@ -64,8 +66,9 @@ export class Board {
     let result = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        if (this.isCurrentlyFallingBlock(x, y)) {
-          result += this.fallingBlock.cellAt(x, y - this.fallingBlockRow);
+        const adjustedX = x - this.fallingBlockColumn + 1;
+        if (this.isCurrentlyFallingBlock(adjustedX, y)) {
+          result += this.fallingBlock.cellAt(adjustedX, y - this.fallingBlockRow);
           continue;
         }
         result += this.stationary[x][y];

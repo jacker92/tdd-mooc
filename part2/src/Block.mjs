@@ -16,6 +16,4 @@ export class Block {
   cellAt(row, column) {
     return this.rows[column][row]
   }
-
-
 }
