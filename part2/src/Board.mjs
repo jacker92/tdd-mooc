@@ -51,7 +51,8 @@ export class Board {
       return;
     }
     if (this.fallingShouldStop()) {
-      this.stationary[1][this.fallingBlockRow] = this.fallingBlock.color;
+      console.log("falling should stop", this.fallingBlockRow, this.fallingBlockColumn)
+      this.stationary[1][this.fallingBlockRow] = this.fallingBlock.cellAt(1, 0)
       this.fallingBlock = null;
       return;
     }
@@ -80,6 +81,7 @@ export class Board {
           );
           continue;
         }
+        console.log(this.stationary[x][y], x, y)
         result += this.stationary[x][y];
       }
 

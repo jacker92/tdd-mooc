@@ -49,11 +49,12 @@ export class Tetromino {
   }
 
   hasCellAt(row, column) {
-    return this.rows()[column] && this.rows()[column][row] !== EMPTY;
+    return this.rows()[column] && this.rows()[column][row] && this.rows()[column][row] !== EMPTY;
   }
 
   cellAt(row, column) {
-    return this.rows()[column][row] || EMPTY;
+    console.log("Cell at", row, column, this.rows()[column][row])
+    return this.rows()[column] && this.rows()[column][row] || EMPTY;
   }
 
   rows() {
