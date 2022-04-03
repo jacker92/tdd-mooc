@@ -49,7 +49,7 @@ export class Tetromino {
   }
 
   hasCellAt(row, column) {
-    return this.rows()[column][row] !== EMPTY
+    return this.rows()[column] && this.rows()[column][row] !== EMPTY
   }
 
   cellAt(row, column) {

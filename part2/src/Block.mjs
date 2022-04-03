@@ -1,3 +1,5 @@
+import { EMPTY } from "./Board.mjs";
+
 export class Block {
   color;
   rows;
@@ -14,6 +16,7 @@ export class Block {
   }
 
   cellAt(row, column) {
-    return this.rows[column][row]
+    console.log("CELL AT", row, column)
+    return this.rows[column] && this.rows[column][row] || EMPTY
   }
 }

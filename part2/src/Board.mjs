@@ -59,19 +59,23 @@ export class Board {
   }
 
   isCurrentlyFallingBlock(x, y) {
-    return this.fallingBlock && this.fallingBlockRow === y && this.fallingBlock.hasCellAt(x, y - this.fallingBlockRow);
+    return this.fallingBlock  && this.fallingBlock.hasCellAt(x, y - this.fallingBlockRow);
   }
 
   toString() {
     let result = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
+        if(this.stationary[x][y] !== EMPTY) {
+          result += this.stationary[x][y];
+          continue;
+        }
         const adjustedX = x - this.fallingBlockColumn + 1;
         if (this.isCurrentlyFallingBlock(adjustedX, y)) {
           result += this.fallingBlock.cellAt(adjustedX, y - this.fallingBlockRow);
           continue;
         }
-        result += this.stationary[x][y];
+        result += EMPTY
       }
 
       result += "\n";
