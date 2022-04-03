@@ -53,7 +53,6 @@ export class Tetromino {
   }
 
   cellAt(row, column) {
-    console.log("Cell at", row, column, this.rows()[column][row])
     return this.rows()[column] && this.rows()[column][row] || EMPTY;
   }
 

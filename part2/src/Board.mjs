@@ -50,9 +50,16 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
+
     if (this.fallingShouldStop()) {
-      console.log("falling should stop", this.fallingBlockRow, this.fallingBlockColumn)
-      this.stationary[1][this.fallingBlockRow] = this.fallingBlock.cellAt(1, 0)
+      for (let x = 0; x < this.width; x++) {
+        const adjustedX = x - this.fallingBlockColumn + 1;
+        const cell = this.fallingBlock.cellAt(adjustedX, 0);
+        if (cell !== EMPTY) {
+          this.stationary[x][this.fallingBlockRow] = cell
+        }
+      }
+
       this.fallingBlock = null;
       return;
     }
