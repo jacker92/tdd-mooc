@@ -39,7 +39,7 @@ export class Board {
   }
 
   otherBlockStopsMovement() {
-    return this.stationary[1][this.fallingBlockRow + 1] !== EMPTY;
+    return this.stationary[this.fallingBlockColumn][this.fallingBlockRow + 1]!== EMPTY;
   }
 
   fallingShouldStop() {
