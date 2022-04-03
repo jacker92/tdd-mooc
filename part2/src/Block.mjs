@@ -16,7 +16,6 @@ export class Block {
   }
 
   cellAt(row, column) {
-    console.log("CELL AT", row, column)
     return this.rows[column] && this.rows[column][row] || EMPTY
   }
 }

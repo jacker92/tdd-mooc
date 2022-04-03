@@ -66,16 +66,12 @@ export class Board {
     let result = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        if(this.stationary[x][y] !== EMPTY) {
-          result += this.stationary[x][y];
-          continue;
-        }
         const adjustedX = x - this.fallingBlockColumn + 1;
-        if (this.isCurrentlyFallingBlock(adjustedX, y)) {
+        if (this.stationary[x][y] === EMPTY && this.isCurrentlyFallingBlock(adjustedX, y)) {
           result += this.fallingBlock.cellAt(adjustedX, y - this.fallingBlockRow);
           continue;
         }
-        result += EMPTY
+        result += this.stationary[x][y]
       }
 
       result += "\n";
