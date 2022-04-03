@@ -67,6 +67,10 @@ export class Tetromino {
   toString() {
     return this.orientations[this.currentOrientation].toString();
   }
+
+  size() {
+    return 2;
+  }
 }
 
 Tetromino.T_SHAPE = new Tetromino(

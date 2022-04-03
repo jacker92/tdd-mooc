@@ -17,4 +17,8 @@ export class Block {
   cellAt(row, column) {
     return (this.rows[column] && this.rows[column][row]) || EMPTY;
   }
+
+  size() {
+    return 1;
+  }
 }

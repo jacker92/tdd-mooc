@@ -52,14 +52,21 @@ export class Board {
     }
 
     if (this.fallingShouldStop()) {
-      for (let x = 0; x < this.width; x++) {
-        const adjustedX = x - this.fallingBlockColumn + 1;
-        const cell = this.fallingBlock.cellAt(adjustedX, 0);
-        if (cell !== EMPTY) {
-          this.stationary[x][this.fallingBlockRow] = cell
+      for (let y = -1; y < this.fallingBlock.size(); y++) {
+        for (let x = 0; x < this.width; x++) {
+          const adjustedX = x - this.fallingBlockColumn + 1;
+          const cell = this.fallingBlock.cellAt(adjustedX, y + (this.fallingBlock.size()- 1));
+          if (cell !== EMPTY) {
+            console.log("Falling block row", cell, this.fallingBlockRow, y, this.stationary, this.height)
+            const value = this.fallingBlockRow+ y
+
+            console.log("Value: ", value)
+            this.stationary[x][value] = cell
+          }
         }
       }
-
+     
+      console.log("Stationary set", this.stationary)
       this.fallingBlock = null;
       return;
     }
