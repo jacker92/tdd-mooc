@@ -25,6 +25,10 @@ export class Board {
       throw new Error("already falling");
     }
 
+    this.initializeFallingBlockValues(block);
+  }
+
+  initializeFallingBlockValues(block) {
     this.fallingBlock = block;
     this.fallingBlockRow = 0;
     this.fallingBlockColumn = Math.round(this.width / 2) - 1;
@@ -56,15 +60,15 @@ export class Board {
 
     if (this.fallingShouldStop()) {
       this.setStationaryValues();
-      return;
     }
+
     this.fallingBlockRow++;
   }
 
   setStationaryValues() {
     for (let y = -1; y < this.fallingBlock.size(); y++) {
       for (let x = 0; x < this.width; x++) {
-        const adjustedX = x - this.fallingBlockColumn + 1;
+        const adjustedX = this.calculateXInGrid(x);
         const adjustedY = y + this.fallingBlock.size() - 1;
         const cell = this.fallingBlock.cellAt(adjustedX, adjustedY);
         if (cell !== EMPTY) {
@@ -82,11 +86,15 @@ export class Board {
     );
   }
 
+  calculateXInGrid(x) {
+    return x - this.fallingBlockColumn + 1;
+  }
+
   toString() {
     let result = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        const adjustedX = x - this.fallingBlockColumn + 1;
+        const adjustedX = this.calculateXInGrid(x);
         if (
           this.stationary[x][y] === EMPTY &&
           this.isCurrentlyFallingBlock(adjustedX, y)
@@ -97,7 +105,6 @@ export class Board {
           );
           continue;
         }
-        console.log(this.stationary[x][y], x, y);
         result += this.stationary[x][y];
       }
 
