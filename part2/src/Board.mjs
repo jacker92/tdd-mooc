@@ -56,8 +56,8 @@ export class Board {
     this.fallingBlockRow++;
   }
 
-  isCurrentlyFallingBlock(i, j) {
-    return this.fallingBlock && this.fallingBlockRow === i && j === 1;
+  isCurrentlyFallingBlock(x, y) {
+    return this.fallingBlock && this.fallingBlockRow === x && this.fallingBlock.hasCellAt(x - this.fallingBlockRow,y);
   }
 
   toString() {
@@ -65,7 +65,7 @@ export class Board {
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
         if (this.isCurrentlyFallingBlock(i, j)) {
-          result += this.fallingBlock.color;
+          result += this.fallingBlock.cellAt(i - this.fallingBlockRow, j);
           continue;
         }
         result += this.stationary[j][i];
