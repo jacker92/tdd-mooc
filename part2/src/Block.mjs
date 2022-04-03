@@ -6,9 +6,8 @@ export class Block {
 
   constructor(color) {
     this.color = color;
-    const shape = 
-    `.${color}.\n...\n...`
-    this.rows =  shape.split("\n");
+    const shape = `.${color}.\n...\n...`;
+    this.rows = shape.split("\n");
   }
 
   hasCellAt(column, row) {
@@ -16,6 +15,6 @@ export class Block {
   }
 
   cellAt(row, column) {
-    return this.rows[column] && this.rows[column][row] || EMPTY
+    return (this.rows[column] && this.rows[column][row]) || EMPTY;
   }
 }
