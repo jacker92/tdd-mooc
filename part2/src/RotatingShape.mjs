@@ -13,8 +13,7 @@ export class RotatingShape {
     let columns = new Array(this.rows.length).fill("");
     this.rows.map((x) => {
       for (let i = 0; i < x.length; i++) {
-        const element = x[i];
-        columns[i] += element + "\n";
+        columns[i] += x[i] + "\n";
       }
     });
 
