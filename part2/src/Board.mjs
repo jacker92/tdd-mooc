@@ -1,4 +1,4 @@
-const EMPTY = ".";
+export const EMPTY = ".";
 
 export class Board {
   width;

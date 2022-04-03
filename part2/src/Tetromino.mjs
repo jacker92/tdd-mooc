@@ -1,4 +1,5 @@
 import { RotatingShape } from "../src/RotatingShape.mjs";
+import { EMPTY } from "./Board.mjs";
 
 export class Tetromino {
   currentOrientation;
@@ -45,6 +46,14 @@ export class Tetromino {
       this.orientations,
       this.currentOrientation + 1
     );
+  }
+
+  hasCellAt(row, column) {
+    return this.rows()[row][column] !== EMPTY
+  }
+
+  cellAt(row, column) {
+    return this.rows()[row][column] || EMPTY
   }
 
   rows() {
