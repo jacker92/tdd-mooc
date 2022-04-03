@@ -39,7 +39,10 @@ export class Board {
   }
 
   otherBlockStopsMovement() {
-    return this.stationary[this.fallingBlockColumn][this.fallingBlockRow + 1]!== EMPTY;
+    return (
+      this.stationary[this.fallingBlockColumn][this.fallingBlockRow + 1] !==
+      EMPTY
+    );
   }
 
   fallingShouldStop() {
@@ -94,7 +97,7 @@ export class Board {
           );
           continue;
         }
-        console.log(this.stationary[x][y], x, y)
+        console.log(this.stationary[x][y], x, y);
         result += this.stationary[x][y];
       }
 
