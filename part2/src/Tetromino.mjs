@@ -48,11 +48,11 @@ export class Tetromino {
     );
   }
 
-  hasCellAt(row, column) {
+  hasCellAt(column, row) {
     return this.rows()[row][column] !== EMPTY
   }
 
-  cellAt(row, column) {
+  cellAt(column, row) {
     return this.rows()[row][column] || EMPTY
   }
 

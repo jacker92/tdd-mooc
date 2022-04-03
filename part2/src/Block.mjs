@@ -9,12 +9,12 @@ export class Block {
     this.rows =  shape.split("\n");
   }
 
-  hasCellAt(row, column) {
+  hasCellAt(column, row) {
     return column === 1;
   }
 
   cellAt(row, column) {
-    return this.rows[row][column]
+    return this.rows[column][row]
   }
 
 

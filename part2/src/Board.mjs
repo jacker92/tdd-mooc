@@ -57,18 +57,18 @@ export class Board {
   }
 
   isCurrentlyFallingBlock(x, y) {
-    return this.fallingBlock && this.fallingBlockRow === x && this.fallingBlock.hasCellAt(x - this.fallingBlockRow,y);
+    return this.fallingBlock && this.fallingBlockRow === y && this.fallingBlock.hasCellAt(x, y - this.fallingBlockRow);
   }
 
   toString() {
     let result = "";
-    for (let i = 0; i < this.height; i++) {
-      for (let j = 0; j < this.width; j++) {
-        if (this.isCurrentlyFallingBlock(i, j)) {
-          result += this.fallingBlock.cellAt(i - this.fallingBlockRow, j);
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        if (this.isCurrentlyFallingBlock(x, y)) {
+          result += this.fallingBlock.cellAt(x, y - this.fallingBlockRow);
           continue;
         }
-        result += this.stationary[j][i];
+        result += this.stationary[x][y];
       }
 
       result += "\n";
