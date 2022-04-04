@@ -29,7 +29,10 @@ export class Board {
   }
 
   moveLeft() {
-    this.fallingBlockColumn--;
+    if (!this.hasBlockOnLeft()) {
+      this.fallingBlockColumn--;
+    }
+
   }
 
   moveRight() {
@@ -38,6 +41,34 @@ export class Board {
 
   moveDown() {
     this.tick();
+  }
+
+  hasBlockOnLeft() {
+    for (let x = 0; x < 3; x++) {
+      for (let y = 0; y < 3; y++) {
+        if (!this.fallingBlock.hasCellAt(x, y)) {
+          continue;
+        }
+        const cX = x - 1 + this.fallingBlockColumn
+        const cY = y + this.fallingBlockRow;
+        const hasStationaryBlock = this.stationary[cX][cY] !== EMPTY
+        if (hasStationaryBlock) {
+          return true;
+        }
+
+        const hasFallingBlockPiece = this.fallingBlock.hasCellAt(cX, cY)
+
+        if (hasFallingBlockPiece && cX - 1 < 0) {
+          return true;
+        }
+
+        console.log(cX, this.fallingBlockColumn)
+        const res = this.stationary[cX][y + this.fallingBlockRow]
+        console.log("res", res, cX)
+      }
+
+    }
+    return false;
   }
 
   initializeFallingBlockValues(block) {
