@@ -48,13 +48,13 @@ export class Board {
         if (!this.fallingBlock.hasCellAt(x, y)) {
           continue;
         }
-        const cX = x - 1 + this.fallingBlockColumn
+        const cX = x - 1 + this.fallingBlockColumn;
         const cY = y + this.fallingBlockRow;
         if (this.hasStationaryPieceAt(cX, cY)) {
           return true;
         }
 
-        const hasFallingBlockPiece = this.fallingBlock.hasCellAt(cX, cY)
+        const hasFallingBlockPiece = this.fallingBlock.hasCellAt(cX, cY);
         const newMoveWillBeOutOfBounds = cX - 1 < 0;
 
         if (hasFallingBlockPiece && newMoveWillBeOutOfBounds) {
@@ -66,7 +66,7 @@ export class Board {
   }
 
   hasStationaryPieceAt(x, y) {
-    return this.stationary[x][y] !== EMPTY
+    return this.stationary[x][y] !== EMPTY;
   }
 
   initializeFallingBlockValues(block) {
@@ -84,8 +84,13 @@ export class Board {
   }
 
   fallingShouldStop() {
-    return this.hasReachedLastRow() ||
-      this.hasStationaryPieceAt(this.fallingBlockColumn, this.fallingBlockRow + 1);
+    return (
+      this.hasReachedLastRow() ||
+      this.hasStationaryPieceAt(
+        this.fallingBlockColumn,
+        this.fallingBlockRow + 1
+      )
+    );
   }
 
   tick() {
