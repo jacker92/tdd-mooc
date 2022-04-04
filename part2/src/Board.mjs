@@ -45,11 +45,11 @@ export class Board {
   }
 
   hasBlockOnRight() {
-    return this.hasBlockOn(-1, (x) => x > this.width)
+    return this.hasBlockOn(-1, (x) => x > this.width);
   }
 
   hasBlockOnLeft() {
-    return this.hasBlockOn(1, (x) => x <= 0)
+    return this.hasBlockOn(1, (x) => x <= 0);
   }
 
   hasBlockOn(xToAdd, nextMoveWillBeOutOfBounds) {
@@ -61,7 +61,10 @@ export class Board {
           return true;
         }
 
-        if (this.fallingBlock.hasCellAt(x, y) && nextMoveWillBeOutOfBounds(cX)) {
+        if (
+          this.fallingBlock.hasCellAt(x, y) &&
+          nextMoveWillBeOutOfBounds(cX)
+        ) {
           return true;
         }
       }

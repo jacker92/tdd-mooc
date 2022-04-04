@@ -3,18 +3,18 @@ import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
 const moveAllTheWayToTheLeft = (board) => {
-  executeTenTimes(() => board.moveLeft())
+  executeTenTimes(() => board.moveLeft());
 };
 
 const moveAllTheWayToTheRight = (board) => {
-  executeTenTimes(() => board.moveRight())
+  executeTenTimes(() => board.moveRight());
 };
 
 const executeTenTimes = (toExecute) => {
   for (let i = 0; i < 10; i++) {
     toExecute();
   }
-}
+};
 
 describe("Falling tetrominoes", () => {
   let board;
