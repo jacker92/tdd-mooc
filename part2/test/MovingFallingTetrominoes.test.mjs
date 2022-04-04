@@ -3,10 +3,18 @@ import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
 const moveAllTheWayToTheLeft = (board) => {
-  for (let i = 0; i < 10; i++) {
-    board.moveLeft();
-  }
+  executeTenTimes(() => board.moveLeft())
 };
+
+const moveAllTheWayToTheRight = (board) => {
+  executeTenTimes(() => board.moveRight())
+};
+
+const executeTenTimes = (toExecute) => {
+  for (let i = 0; i < 10; i++) {
+    toExecute();
+  }
+}
 
 describe("Falling tetrominoes", () => {
   let board;
@@ -58,7 +66,6 @@ describe("Falling tetrominoes", () => {
 
   it("it cannot be moved left beyond the board", () => {
     board.drop(Tetromino.T_SHAPE);
-
     moveAllTheWayToTheLeft(board);
 
     expect(board.toString()).to.equalShape(
@@ -71,7 +78,19 @@ describe("Falling tetrominoes", () => {
     );
   });
 
-  xit("it cannot be moved right beyond the board", () => {});
+  xit("it cannot be moved right beyond the board", () => {
+    board.drop(Tetromino.T_SHAPE);
+    moveAllTheWayToTheRight(board);
+
+    expect(board.toString()).to.equalShape(
+      `........T.
+       .......TTT
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
 
   xit("it cannot be moved down beyond the board (will stop falling)", () => {});
 
