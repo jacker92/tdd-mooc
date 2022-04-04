@@ -55,9 +55,6 @@ export class Board {
   hasBlockOn(xToAdd, nextMoveWillBeOutOfBounds) {
     for (let y = 0; y < 3; y++) {
       for (let x = 0; x < 3; x++) {
-        if (!this.fallingBlock.hasCellAt(x, y)) {
-          continue;
-        }
         const cX = x - xToAdd + this.fallingBlockColumn;
         const cY = y + this.fallingBlockRow;
         if (this.hasStationaryPieceAt(cX, cY)) {
@@ -74,7 +71,7 @@ export class Board {
 
   hasStationaryPieceAt(x, y) {
     if (!this.stationary[x]) {
-      return false
+      return false;
     }
     return this.stationary[x][y] !== EMPTY;
   }
