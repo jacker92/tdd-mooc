@@ -78,7 +78,7 @@ describe("Falling tetrominoes", () => {
     );
   });
 
-  xit("it cannot be moved right beyond the board", () => {
+  it("it cannot be moved right beyond the board", () => {
     board.drop(Tetromino.T_SHAPE);
     moveAllTheWayToTheRight(board);
 
