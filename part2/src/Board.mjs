@@ -32,7 +32,6 @@ export class Board {
     if (!this.hasBlockOnLeft()) {
       this.fallingBlockColumn--;
     }
-
   }
 
   moveRight() {
@@ -44,31 +43,30 @@ export class Board {
   }
 
   hasBlockOnLeft() {
-    for (let x = 0; x < 3; x++) {
-      for (let y = 0; y < 3; y++) {
+    for (let y = 0; y < 3; y++) {
+      for (let x = 0; x < 3; x++) {
         if (!this.fallingBlock.hasCellAt(x, y)) {
           continue;
         }
         const cX = x - 1 + this.fallingBlockColumn
         const cY = y + this.fallingBlockRow;
-        const hasStationaryBlock = this.stationary[cX][cY] !== EMPTY
-        if (hasStationaryBlock) {
+        if (this.hasStationaryPieceAt(cX, cY)) {
           return true;
         }
 
         const hasFallingBlockPiece = this.fallingBlock.hasCellAt(cX, cY)
+        const newMoveWillBeOutOfBounds = cX - 1 < 0;
 
-        if (hasFallingBlockPiece && cX - 1 < 0) {
+        if (hasFallingBlockPiece && newMoveWillBeOutOfBounds) {
           return true;
         }
-
-        console.log(cX, this.fallingBlockColumn)
-        const res = this.stationary[cX][y + this.fallingBlockRow]
-        console.log("res", res, cX)
       }
-
     }
     return false;
+  }
+
+  hasStationaryPieceAt(x, y) {
+    return this.stationary[x][y] !== EMPTY
   }
 
   initializeFallingBlockValues(block) {
@@ -85,15 +83,9 @@ export class Board {
     return this.fallingBlockRow === this.height - 1;
   }
 
-  otherBlockStopsMovement() {
-    return (
-      this.stationary[this.fallingBlockColumn][this.fallingBlockRow + 1] !==
-      EMPTY
-    );
-  }
-
   fallingShouldStop() {
-    return this.hasReachedLastRow() || this.otherBlockStopsMovement();
+    return this.hasReachedLastRow() ||
+      this.hasStationaryPieceAt(this.fallingBlockColumn, this.fallingBlockRow + 1);
   }
 
   tick() {
@@ -112,7 +104,7 @@ export class Board {
     for (let y = -1; y < this.fallingBlock.size(); y++) {
       for (let x = 0; x < this.width; x++) {
         const adjustedX = this.calculateXInGrid(x);
-        const adjustedY = y + this.fallingBlock.size() - 1;
+        const adjustedY = this.calculateYInGrid(y);
         const cell = this.fallingBlock.cellAt(adjustedX, adjustedY);
         if (cell !== EMPTY) {
           this.stationary[x][this.fallingBlockRow + y] = cell;
@@ -133,13 +125,17 @@ export class Board {
     return x - this.fallingBlockColumn + 1;
   }
 
+  calculateYInGrid(y) {
+    return y + this.fallingBlock.size() - 1;
+  }
+
   toString() {
     let result = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         const adjustedX = this.calculateXInGrid(x);
         if (
-          this.stationary[x][y] === EMPTY &&
+          !this.hasStationaryPieceAt(x, y) &&
           this.isCurrentlyFallingBlock(adjustedX, y)
         ) {
           result += this.fallingBlock.cellAt(
