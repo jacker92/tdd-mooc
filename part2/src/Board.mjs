@@ -28,6 +28,10 @@ export class Board {
     this.initializeFallingBlockValues(block);
   }
 
+  moveLeft() {
+    this.fallingBlockColumn--;
+  }
+
   initializeFallingBlockValues(block) {
     this.fallingBlock = block;
     this.fallingBlockRow = 0;

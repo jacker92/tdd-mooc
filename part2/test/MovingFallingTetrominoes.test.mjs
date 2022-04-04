@@ -1,11 +1,25 @@
+import { expect } from "chai";
+import { Board } from "../src/Board.mjs";
+import { Tetromino } from "../src/Tetromino.mjs";
+
 describe("Falling tetrominoes", () => {
     let board;
     beforeEach(() => {
       board = new Board(10, 6);
     });
 
-    xit("a falling tetromino can be moved left", () => {
-        
+    it("a falling tetromino can be moved left", () => {
+        board.drop(Tetromino.T_SHAPE);
+        board.moveLeft();
+
+        expect(board.toString()).to.equalShape(
+          `...T......
+           ..TTT.....
+           ..........
+           ..........
+           ..........
+           ..........`
+        );
     });
 
     xit("a falling tetromino can be moved right", () => {
