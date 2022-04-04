@@ -32,6 +32,10 @@ export class Board {
     this.fallingBlockColumn--;
   }
 
+  moveRight() {
+    this.fallingBlockColumn++;
+  }
+
   initializeFallingBlockValues(block) {
     this.fallingBlock = block;
     this.fallingBlockRow = 0;

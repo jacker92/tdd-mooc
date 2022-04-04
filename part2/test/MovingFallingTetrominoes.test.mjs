@@ -23,7 +23,17 @@ describe("Falling tetrominoes", () => {
     });
 
     xit("a falling tetromino can be moved right", () => {
-        
+        board.drop(Tetromino.T_SHAPE);
+        board.moveRight();
+
+        expect(board.toString()).to.equalShape(
+          `.....T....
+           ....TTT...
+           ..........
+           ..........
+           ..........
+           ..........`
+        );
     });
 
     xit("a falling tetromino can be moved down", () => {
