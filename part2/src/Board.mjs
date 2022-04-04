@@ -35,7 +35,7 @@ export class Board {
   }
 
   moveRight() {
-    if(!this.hasBlockOnRight()) {
+    if (!this.hasBlockOnRight()) {
       this.fallingBlockColumn++;
     }
   }
@@ -44,46 +44,27 @@ export class Board {
     this.tick();
   }
 
-  hasBlockOnLeft() {
-    for (let y = 0; y < 3; y++) {
-      for (let x = 0; x < 3; x++) {
-        if (!this.fallingBlock.hasCellAt(x, y)) {
-          continue;
-        }
-        const cX = x - 1 + this.fallingBlockColumn;
-        const cY = y + this.fallingBlockRow;
-        if (this.hasStationaryPieceAt(cX, cY)) {
-          return true;
-        }
-
-        const hasFallingBlockPiece = this.fallingBlock.hasCellAt(cX, cY);
-        const newMoveWillBeOutOfBounds = cX - 1 < 0;
-
-        if (hasFallingBlockPiece && newMoveWillBeOutOfBounds) {
-          return true;
-        }
-      }
-    }
-    return false;
+  hasBlockOnRight() {
+    return this.hasBlockOn(-1, (x) => x > this.width)
   }
 
-  hasBlockOnRight() {
+  hasBlockOnLeft() {
+    return this.hasBlockOn(1, (x) => x <= 0)
+  }
+
+  hasBlockOn(xToAdd, nextMoveWillBeOutOfBounds) {
     for (let y = 0; y < 3; y++) {
       for (let x = 0; x < 3; x++) {
         if (!this.fallingBlock.hasCellAt(x, y)) {
           continue;
         }
-        const cX = x + 1 + this.fallingBlockColumn;
+        const cX = x - xToAdd + this.fallingBlockColumn;
         const cY = y + this.fallingBlockRow;
-
         if (this.hasStationaryPieceAt(cX, cY)) {
           return true;
         }
 
-        const hasFallingBlockPiece = this.fallingBlock.hasCellAt(x, y);
-        const newMoveWillBeOutOfBounds = cX + 1 > this.width + 1;
-
-        if (hasFallingBlockPiece && newMoveWillBeOutOfBounds) {
+        if (this.fallingBlock.hasCellAt(x, y) && nextMoveWillBeOutOfBounds(cX)) {
           return true;
         }
       }
@@ -92,7 +73,7 @@ export class Board {
   }
 
   hasStationaryPieceAt(x, y) {
-    if(!this.stationary[x]) {
+    if (!this.stationary[x]) {
       return false
     }
     return this.stationary[x][y] !== EMPTY;
